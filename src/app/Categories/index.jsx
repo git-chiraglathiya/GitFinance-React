@@ -5,7 +5,8 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 import { Plus } from "lucide-react";
 
-const Categories = () => {
+const Categories = ({ page }) => {
+    
     return (
         <>
             <SidebarProvider>

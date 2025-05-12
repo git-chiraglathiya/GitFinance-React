@@ -11,8 +11,10 @@ import data from "./data.json"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { FloatingActionButton } from "@/components/floating-action-button";
+import { useActivePageStore } from "@/store/activePage";
+import { useEffect } from "react";
 
-export default function Page() {
+const Dashboard = ({ page }) => {
 
   return (
     <SidebarProvider>
@@ -35,3 +37,5 @@ export default function Page() {
     </SidebarProvider>
   )
 }
+
+export default Dashboard;
