@@ -47,6 +47,8 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
+import { useLocation, useRoutes } from 'react-router';
+
 const data = {
   teams: [
     {
@@ -103,11 +105,6 @@ const data = {
       icon: IconCoins,
     },
     {
-      title: "Assets",
-      url: "/assets",
-      icon: IconCoins,
-    },
-    {
       title: "Targets",
       url: "/targets",
       icon: IconTargetArrow,
@@ -135,15 +132,15 @@ const data = {
       icon: IconSend,
     }
   ],
-  recurring: [
+  future: [
     {
-      name: "Income",
-      url: "/recurring-income",
+      name: "Loan Payment",
+      url: "/loan",
       icon: IconDatabase,
     },
     {
-      name: "Expenses",
-      url: "/recurring-expense",
+      name: "Receivables",
+      url: "/receivables",
       icon: IconReport,
     },
     {
@@ -157,6 +154,10 @@ const data = {
 export function AppSidebar({
   ...props
 }) {
+
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -173,8 +174,8 @@ export function AppSidebar({
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavDocuments items={data.recurring} />
+        <NavMain items={data.navMain} currentPath={currentPath} />
+        <NavDocuments items={data.future} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>

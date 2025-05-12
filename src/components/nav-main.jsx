@@ -1,5 +1,5 @@
 import { IconCirclePlusFilled, IconMail } from "@tabler/icons-react";
-
+import { useLocation, useRoutes } from 'react-router';
 import { Button } from "@/components/ui/button"
 import {
   SidebarGroup,
@@ -10,7 +10,8 @@ import {
 } from "@/components/ui/sidebar"
 
 export function NavMain({
-  items
+  items,
+  currentPath
 }) {
   return (
     <SidebarGroup>
@@ -19,7 +20,7 @@ export function NavMain({
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton tooltip={item.title}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear">
+              className={`${ item.url === currentPath ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear" : ''}`}>
                 {item.icon && <item.icon />}
                 <span>{item.title}</span>
               </SidebarMenuButton>
