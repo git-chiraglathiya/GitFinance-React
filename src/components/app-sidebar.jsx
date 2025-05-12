@@ -128,13 +128,13 @@ const data = {
     },
     {
       title: "Feedback",
-      url: "/help",
+      url: "/feedback",
       icon: IconSend,
     }
   ],
   future: [
     {
-      name: "Loan Payment",
+      name: "Loans / Debt",
       url: "/loan",
       icon: IconDatabase,
     },
@@ -142,12 +142,7 @@ const data = {
       name: "Receivables",
       url: "/receivables",
       icon: IconReport,
-    },
-    {
-      name: "Investment",
-      url: "/recurring-investment",
-      icon: IconFileWord,
-    },
+    }
   ],
 }
 
@@ -175,8 +170,8 @@ export function AppSidebar({
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} currentPath={currentPath} />
-        <NavDocuments items={data.future} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        <NavDocuments items={data.future} currentPath={currentPath}  />
+        <NavSecondary items={data.navSecondary} currentPath={currentPath}  className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />

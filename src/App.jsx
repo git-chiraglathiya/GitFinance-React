@@ -1,16 +1,8 @@
-import Dashboard from "@/app/Dashboard";
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { RouterProvider } from "react-router";
 import { ThemeProvider } from "@/components/theme-provider";
+import { router } from "./router";
 
 function App() {
-
-  let router = createBrowserRouter([
-    {
-      path: "/",
-      Component: Dashboard
-    },
-  ]);
-
   return (
     <>
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -20,4 +12,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

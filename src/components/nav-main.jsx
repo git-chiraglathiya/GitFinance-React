@@ -1,6 +1,4 @@
-import { IconCirclePlusFilled, IconMail } from "@tabler/icons-react";
-import { useLocation, useRoutes } from 'react-router';
-import { Button } from "@/components/ui/button"
+import { Link } from "react-router";
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -19,10 +17,11 @@ export function NavMain({
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton tooltip={item.title}
-              className={`${ item.url === currentPath ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear" : ''}`}>
-                {item.icon && <item.icon />}
-                <span>{item.title}</span>
+              <SidebarMenuButton asChild tooltip={item.title} variant={currentPath === item.url ? "active": "default"}>
+                <Link to={item.url}>
+                  {item.icon && <item.icon />}
+                  <span>{item.title}</span>
+                </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
