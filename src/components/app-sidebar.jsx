@@ -2,25 +2,41 @@ import * as React from "react"
 import {
   IconCamera,
   IconChartBar,
+  IconCalendar,
   IconDashboard,
   IconDatabase,
+  IconTargetArrow,
+  IconCoins,
   IconFileAi,
+  IconCategory,
+  IconTags,
   IconFileDescription,
   IconFileWord,
+  IconSend,
   IconFolder,
   IconHelp,
   IconInnerShadowTop,
   IconListDetails,
   IconReport,
+  IconSchool,
   IconSearch,
   IconSettings,
-  IconUsers,
+  IconUsers
 } from "@tabler/icons-react"
+
+import {   
+  GalleryVerticalEnd,
+  AudioWaveform,
+  Command 
+} from "lucide-react"
 
 import { NavDocuments } from "@/components/nav-documents"
 import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
 import { NavUser } from "@/components/nav-user"
+
+import { TeamSwitcher } from "@/components/team-switcher"
+
 import {
   Sidebar,
   SidebarContent,
@@ -32,6 +48,23 @@ import {
 } from "@/components/ui/sidebar"
 
 const data = {
+  teams: [
+    {
+      name: "All Accounts",
+      logo: GalleryVerticalEnd,
+      plan: "Accounts",
+    },
+    {
+      name: "Chirag Lathiya",
+      logo: AudioWaveform,
+      plan: "Startup",
+    },
+    {
+      name: "Rameshbhai Lathiya",
+      logo: Command,
+      plan: "Free",
+    },
+  ],
   user: {
     name: "shadcn",
     email: "m@example.com",
@@ -40,109 +73,82 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/",
       icon: IconDashboard,
     },
     {
-      title: "Lifecycle",
-      url: "#",
+      title: "Transactions",
+      url: "/transactions",
       icon: IconListDetails,
     },
     {
-      title: "Analytics",
-      url: "#",
-      icon: IconChartBar,
+      title: "Categories",
+      url: "/categories",
+      icon: IconCategory,
     },
     {
-      title: "Projects",
-      url: "#",
-      icon: IconFolder,
+      title: "Tags",
+      url: "/tags",
+      icon: IconTags
+      //examples: ["refundable", "non-refundable", "temparory", "TV Debt", "Personal Loan"]
     },
     {
-      title: "Team",
-      url: "#",
-      icon: IconUsers,
-    },
-  ],
-  navClouds: [
-    {
-      title: "Capture",
-      icon: IconCamera,
-      isActive: true,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
+      title: "Recurring",
+      url: "/recurring",
+      icon: IconCalendar,
     },
     {
-      title: "Proposal",
-      icon: IconFileDescription,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
+      title: "Assets",
+      url: "/assets",
+      icon: IconCoins,
     },
     {
-      title: "Prompts",
-      icon: IconFileAi,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
+      title: "Assets",
+      url: "/assets",
+      icon: IconCoins,
+    },
+    {
+      title: "Targets",
+      url: "/targets",
+      icon: IconTargetArrow,
     },
   ],
   navSecondary: [
     {
       title: "Settings",
-      url: "#",
+      url: "/settings",
       icon: IconSettings,
     },
     {
+      title: "Learning",
+      url: "/learning",
+      icon: IconSchool,
+    },
+    {
       title: "Get Help",
-      url: "#",
+      url: "/help",
       icon: IconHelp,
     },
     {
-      title: "Search",
-      url: "#",
-      icon: IconSearch,
-    },
+      title: "Feedback",
+      url: "/help",
+      icon: IconSend,
+    }
   ],
-  documents: [
+  recurring: [
     {
-      name: "Data Library",
-      url: "#",
+      name: "Income",
+      url: "/recurring-income",
       icon: IconDatabase,
     },
     {
-      name: "Reports",
-      url: "#",
+      name: "Expenses",
+      url: "/recurring-expense",
       icon: IconReport,
     },
     {
-      name: "Word Assistant",
-      url: "#",
+      name: "Investment",
+      url: "/recurring-investment",
       icon: IconFileWord,
     },
   ],
@@ -158,16 +164,17 @@ export function AppSidebar({
           <SidebarMenuItem>
             <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:!p-1.5">
               <a href="#">
-                <IconInnerShadowTop className="!size-5" />
-                <span className="text-base font-semibold">Acme Inc.</span>
+                <img src="/logo.png" width={20} height={20} />
+                <span className="text-base font-semibold">Git Finance</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
+        <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
+        <NavDocuments items={data.recurring} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
